@@ -1,0 +1,249 @@
+{
+    1: {
+        "name" : "Hydrogen",
+        "symbol" : "H",
+        "atomicNumber" : 1,
+        "atomicWeight" : 1.00794,
+        "groundStateConfig" : "1s",
+        "ionizationEnergy" : 13.5984
+    },
+    2, {
+        "name" : "Helium",
+        "symbol" : "He",
+        "atomicNumber" : 2,
+        "atomicWeight" : 4.002602,
+        "groundStateConfig" : "1s^2",
+        "ionizationEnergy" : 24.5874
+    },
+    3, {
+        "name" : "Lithium",
+        "symbol" : "Li",
+        "atomicNumber" : 3,
+        "atomicWeight" : 6.941,
+        "groundStateConfig" : "(1s^2)2s",
+        "ionizationEnergy" : 5.3917
+    },
+    4, {
+        "name" : "Beryllium",
+        "symbol" : "Be",
+        "atomicNumber" : 4,
+        "atomicWeight" : 9.012182,
+        "groundStateConfig" : "(1s^2)2s^2",
+        "ionizationEnergy" : 9.3227
+    },
+    5, {
+        "name" : "Boron",
+        "symbol" : "B",
+        "atomicNumber" : 5,
+        "atomicWeight" : 10.811,
+        "groundStateConfig" : "(1s^2)(2s^2)2p",
+        "ionizationEnergy" : 8.2980
+    },
+    6, {
+        "name" : "Carbon",
+        "symbol" : "C",
+        "atomicNumber" : 6,
+        "atomicWeight" : 12.0107,
+        "groundStateConfig" : "(1s^2)(2s^2)2p^2",
+        "ionizationEnergy" : 11.2603
+    },
+    7, {
+        "name" : "Nitrogen",
+        "symbol" : "N",
+        "atomicNumber" : 7,
+        "atomicWeight" : 14.0067,
+        "groundStateConfig" : "(1s^2)(2s^2)2p^3",
+        "ionizationEnergy" : 14.5341
+    },
+    8, {
+        "name" : "Oxygen",
+        "symbol" : "O",
+        "atomicNumber" : 8,
+        "atomicWeight" : 15.9994,
+        "groundStateConfig" : "(1s^2)(2s^2)2p^4",
+        "ionizationEnergy" : 13.6181
+    },
+    9, {
+        "name" : "Fluorine",
+        "symbol" : "F",
+        "atomicNumber" : 9,
+        "atomicWeight" : 18.9984032,
+        "groundStateConfig" : "(1s^2)(2s^2)2p^5",
+        "ionizationEnergy" : 17.4228
+    },
+    10, {
+        "name" : "Neon",
+        "symbol" : "Ne",
+        "atomicNumber" : 10,
+        "atomicWeight" : 20.1797,
+        "groundStateConfig" : "(1s^2)(2s^2)2p^6",
+        "ionizationEnergy" : 21.5645
+    },
+    11, {
+        "name" : "Sodium",
+        "symbol" : "Na",
+        "atomicNumber" : 11,
+        "atomicWeight" : 22.98976928,
+        "groundStateConfig" : "[Ne]3s",
+        "ionizationEnergy" : 5.1391
+    },
+    12, {
+        "name" : "Magnesium",
+        "symbol" : "Mg",
+        "atomicNumber" : 12,
+        "atomicWeight" : 24.3050,
+        "groundStateConfig" : "[Ne]3s^2",
+        "ionizationEnergy" : 7.6462
+    },
+    13, {
+        "name" : "Aluminum",
+        "symbol" : "Al",
+        "atomicNumber" : 13,
+        "atomicWeight" : 26.9815386,
+        "groundStateConfig" : "[Ne](3s^2)3p",
+        "ionizationEnergy" : 5.9858
+    },
+    14, {
+        "name" : "Silicon",
+        "symbol" : "Si",
+        "atomicNumber" : 14,
+        "atomicWeight" : 28.0855,
+        "groundStateConfig" : "[Ne](3s^2)3p^2",
+        "ionizationEnergy" : 8.1517
+    },
+    15, {
+        "name" : "Phosphorus",
+        "symbol" : "P",
+        "atomicNumber" : P,
+        "atomicWeight" : 30.973762,
+        "groundStateConfig" : "[Ne](3s^2)3p^3",
+        "ionizationEnergy" : 10.4867
+    },
+    16, {
+        "name" : "Sulfur",
+        "symbol" : "S",
+        "atomicNumber" : 16,
+        "atomicWeight" : 32.065,
+        "groundStateConfig" : "[Ne](3S^2)3p^4",
+        "ionizationEnergy" : 10.3600
+    },
+    17, {
+        "name" : "Chlorine",
+        "symbol" : "Cl",
+        "atomicNumber" : 17,
+        "atomicWeight" : 35.453,
+        "groundStateConfig" : "[Ne](3s^2)3p^5",
+        "ionizationEnergy" : 12.9676
+    },
+    18, {
+        "name" : "Argon",
+        "symbol" : "Ar",
+        "atomicNumber" : 18,
+        "atomicWeight" : 39.948,
+        "groundStateConfig" : "[Ne](3s^2)3p^6",
+        "ionizationEnergy" : 15.7596
+    },
+    19, {
+        "name" : "Potassium",
+        "symbol" : "K",
+        "atomicNumber" : 19,
+        "atomicWeight" : 39.0983,
+        "groundStateConfig" : "[Ar]4s",
+        "ionizationEnergy" : 4.3407
+    },
+    20, {
+        "name" : "Calcium",
+        "symbol" : "Ca",
+        "atomicNumber" : 20,
+        "atomicWeight" : 40.078,
+        "groundStateConfig" : "[Ar]4s^2",
+        "ionizationEnergy" : 6.1132
+    },
+    21, {
+        "name" : "Scandium",
+        "symbol" : "Sc",
+        "atomicNumber" : 21,
+        "atomicWeight" : 44.955912,
+        "groundStateConfig" : "[Ar]3d4s^2",
+        "ionizationEnergy" : 6.5615
+    },
+    22, {
+        "name" : "Titanium",
+        "symbol" : "Ti",
+        "atomicNumber" : 22,
+        "atomicWeight" : 47.867,
+        "groundStateConfig" : "[Ar](3d^2)4s^2",
+        "ionizationEnergy" : 6.8281
+    },
+    23, {
+        "name" : "Vanadium",
+        "symbol" : "V",
+        "atomicNumber" : 23,
+        "atomicWeight" : 50.9415,
+        "groundStateConfig" : "[Ar](3d^3)4s^2",
+        "ionizationEnergy" : 6.7462
+    },
+    24, {
+        "name" : "Chromium",
+        "symbol" : "Cr",
+        "atomicNumber" : 24,
+        "atomicWeight" : 51.9961,
+        "groundStateConfig" : "[Ar](3d^5)4s",
+        "ionizationEnergy" : 6.7665
+    },
+    25, {
+        "name" : "Manganese",
+        "symbol" : "Mn",
+        "atomicNumber" : 25,
+        "atomicWeight" : 54.938045,
+        "groundStateConfig" : "[Ar](3d^5)4s^2",
+        "ionizationEnergy" : 7.4340
+    },
+    26, {
+        "name" : "Iron",
+        "symbol" : "Fe",
+        "atomicNumber" : 26,
+        "atomicWeight" : 55.845,
+        "groundStateConfig" : "[Ar](3d^6)4s^2",
+        "ionizationEnergy" : 7.9024
+    },
+    27, {
+        "name" : "Cobalt",
+        "symbol" : "Co",
+        "atomicNumber" : 27,
+        "atomicWeight" : 58.933195,
+        "groundStateConfig" : "[Ar](3d^7)4s^2",
+        "ionizationEnergy" : 7.8810
+    },
+    28, {
+        "name" : "Nickel",
+        "symbol" : "Ni",
+        "atomicNumber" : 28,
+        "atomicWeight" : 58.6934,
+        "groundStateConfig" : "[Ar](3d^8)4s^2",
+        "ionizationEnergy" : 7.6399
+    },
+    29, {
+        "name" : "Copper",
+        "symbol" : "Cu",
+        "atomicNumber" : 29,
+        "atomicWeight" : 63.546,
+        "groundStateConfig" : "[Ar](3d^10)4s",
+        "ionizationEnergy" : 7.7264
+    },
+    30, {
+        "name" : "Zinc",
+        "symbol" : "Zn",
+        "atomicNumber" : 30,
+        "atomicWeight" : 65.38,
+        "groundStateConfig" : "[Ar](3d^10)4s^2",
+        "ionizationEnergy" : 9.3942
+    },
+    , {
+        "name" : "",
+        "symbol" : "",
+        "atomicNumber" : ,
+        "atomicWeight" : ,
+        "groundStateConfig" : "",
+        "ionizationEnergy" : 
+    },
