@@ -1,0 +1,2 @@
+SET(SRCS pte.c)
+ADD_EXECUTABLE(pte ${SRCS})
