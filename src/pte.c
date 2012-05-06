@@ -56,7 +56,7 @@ static unsigned char* read_whole_file(const char* file_name)
     bytes_read = fread(contents, sizeof(unsigned char), s, f);
     if (bytes_read != s)
     {
-        fprintf(stderr, "Short read of '%s': expected %d bytes but go %d: %s.\n", file_name, s, bytes_read, strerror(errno));
+        fprintf(stderr, "Short read of '%s': expected %d bytes but go %zu: %s.\n", file_name, s, bytes_read, strerror(errno));
         exit(EXIT_FAILURE);
     }
 
@@ -69,6 +69,63 @@ static unsigned char* read_whole_file(const char* file_name)
     return contents;
 }
 
+json_value* get_element(char* key)
+{
+    char* data = read_whole_file("../elements.json");
+    json_value* elements = json_parse(data);
+    int i;
+    for (i=0; i < elements->u.object.length; i++)
+    {
+        json_value* element = elements->u.object.values[i].value;
+        char* name;
+        char* symbol;
+        int atomic_number;
+        int j;
+        for (j=0; j < element->u.object.length; j++)
+        {
+            char * subkey = element->u.object.values[j].name;
+            json_value* value = element->u.object.values[j].value;
+            //printf("checking: '%s'\n", name);
+            if (!strcmp(subkey, "name"))
+            {
+                name = value->u.string.ptr;
+            }
+            else if (!strcmp(subkey, "symbol"))
+            {
+                symbol = value->u.string.ptr;
+            }
+            else if (!strcmp(subkey, "atomicNumber"))
+            {
+                atomic_number = value->u.integer;
+            }
+        }
+        // name and/or symbol will be NULL if not JSON we support
+        if (name == NULL ||
+            symbol == NULL)
+        {
+            continue;
+        }
+
+        char atomic_num_str[3];
+        sprintf(atomic_num_str, "%d", atomic_number);
+        if (!strcmp(name, key))
+        {
+            return element;
+        }
+        else if (!strcmp(symbol, key))
+        {
+            return element;
+        }
+        else if (!strcmp(atomic_num_str, key))
+        {
+            return element;
+        }
+        //json_value* e = elements->u.object.values[i];
+        //printf("elements.integer: %s\n", elements.integer);
+    }
+    return NULL;
+}
+
 /**
  * Prints the element information based on the arguments. If no arguments
  * are passed, the help is printed.
@@ -76,19 +133,40 @@ static unsigned char* read_whole_file(const char* file_name)
  * @param argc the number of arguments
  * @param argv the arguments
  */
-void print_element_info(int argc, char** argv)
-{
+void print_element_info(int argc, char** argv) {
     if (argc < 1)
     {
         print_help();
         return;
     }
     printf("printing information for element: %s\n", argv[0]);
-    char* data = read_whole_file("../elements.json");
-    printf("%s\n", data);
-    //char* elements_json = "";
-    //json_value* elements = json_parse(elements_json);
-}
+    json_value* element = get_element(argv[0]);
+    if (element == NULL)
+    {
+        printf("element is NULL\n");
+        return;
+    }
+    int i;
+    for (i=0; i < element->u.object.length; i++)
+    {
+        char * key = element->u.object.values[i].name;
+        json_value* value = element->u.object.values[i].value;
+        //printf("checking: '%s'\n", name);
+        if (!strcmp(key, "name"))
+        {
+            printf("name: '%s'\n", value->u.string.ptr);
+        }
+        else if (!strcmp(key, "symbol"))
+        {
+            printf("symbol: '%s'\n", value->u.string.ptr);
+        }
+        else if (!strcmp(key, "atomicNumber"))
+        {
+            long num = value->u.integer;
+            printf("atomic number: '%ld'\n", num);
+        }
+    }
+ }
 
 int main(int argc, char** argv)
 {
