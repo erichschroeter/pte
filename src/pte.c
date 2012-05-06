@@ -12,11 +12,16 @@ void print_help()
 {
     printf("\nprints periodic table of elements information.\n\n");
     printf("Usage:\n"
-        "  pte [options] [symbol | atomic number]\n\n"
+        "  pte [options] name | symbol | atomic number ...\n\n"
         "Options:\n"
         "  -h               prints this menu\n"
         "  -v, --version    prints the version number\n"
-        "  --verbose        prints verbose information\n");
+        "  --verbose        prints verbose information\n\n"
+        "Examples:\n"
+        "  pte Carbon\n"
+        "  pte C\n"
+        "  pte 6\n"
+        "\n");
 }
 
 static unsigned get_file_size(const char* file_name)
@@ -85,7 +90,7 @@ json_value* get_element(char* key)
         {
             char * subkey = element->u.object.values[j].name;
             json_value* value = element->u.object.values[j].value;
-            //printf("checking: '%s'\n", name);
+
             if (!strcmp(subkey, "name"))
             {
                 name = value->u.string.ptr;
@@ -108,11 +113,11 @@ json_value* get_element(char* key)
 
         char atomic_num_str[3];
         sprintf(atomic_num_str, "%d", atomic_number);
-        if (!strcmp(name, key))
+        if (!strcasecmp(name, key))
         {
             return element;
         }
-        else if (!strcmp(symbol, key))
+        else if (!strcasecmp(symbol, key))
         {
             return element;
         }
@@ -120,8 +125,6 @@ json_value* get_element(char* key)
         {
             return element;
         }
-        //json_value* e = elements->u.object.values[i];
-        //printf("elements.integer: %s\n", elements.integer);
     }
     return NULL;
 }
@@ -134,36 +137,38 @@ json_value* get_element(char* key)
  * @param argv the arguments
  */
 void print_element_info(int argc, char** argv) {
+    // can't do anything if we don't know which element(s) to print
     if (argc < 1)
     {
-        print_help();
-        return;
-    }
-    printf("printing information for element: %s\n", argv[0]);
-    json_value* element = get_element(argv[0]);
-    if (element == NULL)
-    {
-        printf("element is NULL\n");
         return;
     }
     int i;
-    for (i=0; i < element->u.object.length; i++)
+    for (i=0; i < argc; i++)
     {
-        char * key = element->u.object.values[i].name;
-        json_value* value = element->u.object.values[i].value;
-        //printf("checking: '%s'\n", name);
-        if (!strcmp(key, "name"))
+        json_value* element = get_element(argv[i]);
+        if (element == NULL)
         {
-            printf("name: '%s'\n", value->u.string.ptr);
+            return;
         }
-        else if (!strcmp(key, "symbol"))
+        int j;
+        for (j=0; j < element->u.object.length; j++)
         {
-            printf("symbol: '%s'\n", value->u.string.ptr);
-        }
-        else if (!strcmp(key, "atomicNumber"))
-        {
-            long num = value->u.integer;
-            printf("atomic number: '%ld'\n", num);
+            char * key = element->u.object.values[j].name;
+            json_value* value = element->u.object.values[j].value;
+
+            if (!strcmp(key, "name"))
+            {
+                printf("name: '%s'\n", value->u.string.ptr);
+            }
+            else if (!strcmp(key, "symbol"))
+            {
+                printf("symbol: '%s'\n", value->u.string.ptr);
+            }
+            else if (!strcmp(key, "atomicNumber"))
+            {
+                long num = value->u.integer;
+                printf("atomic number: '%ld'\n", num);
+            }
         }
     }
  }
@@ -187,10 +192,10 @@ int main(int argc, char** argv)
         print_help();
         break;
     default:
-        if (argc < 1)
+        // if we don't have an argument we can't do anything
+        if (argc < 2)
         {
-            print_help();
-            return;
+            break;
         }
         int _argc = argc - 1;
         char* _argv[_argc];
