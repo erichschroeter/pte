@@ -5,6 +5,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include "../lib/json-parser/json.h"
+#include "elements.h"
 
 static int verbose_flag;
 
@@ -76,8 +77,7 @@ static unsigned char* read_whole_file(const char* file_name)
 
 json_value* get_element(char* key)
 {
-    char* data = read_whole_file("../elements.json");
-    json_value* elements = json_parse(data);
+    json_value* elements = json_parse(ELEMENTS_JSON);
     int i;
     for (i=0; i < elements->u.object.length; i++)
     {
