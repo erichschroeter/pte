@@ -31,3 +31,4 @@ All information on the elements is retrieved from `elements.h`, which is generat
 1. `mkdir build`
 1. `cd build/`
 1. `cmake ..`
+1. `make`
