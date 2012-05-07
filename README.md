@@ -22,8 +22,12 @@ All information on the elements is retrieved from `elements.h`, which is generat
 1. `cd res/`
 1. `./json-to-H.sh`
 
-### Compiling
+### Building
 
+1. `git clone git://github.com/erichschroeter/pte.git`
+1. `cd pte`
+1. `git submodule init`
+1. `git submodule update`
 1. `mkdir build`
 1. `cd build/`
 1. `cmake ..`
