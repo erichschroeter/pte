@@ -25,18 +25,26 @@ int print_default(int argc, char** argv)
             char * key = element->u.object.values[j].name;
             json_value* value = element->u.object.values[j].value;
 
-            if (!strcmp(key, "name"))
+            switch(value->type)
             {
-                printf("name: '%s'\n", value->u.string.ptr);
-            }
-            else if (!strcmp(key, "symbol"))
-            {
-                printf("symbol: '%s'\n", value->u.string.ptr);
-            }
-            else if (!strcmp(key, "atomicNumber"))
-            {
-                long num = value->u.integer;
-                printf("atomic number: '%ld'\n", num);
+            case json_integer:
+                printf("%s:%ld\n", key, value->u.integer);
+                break;
+            case json_double:
+                printf("%s:%f\n", key, value->u.dbl);
+                break;
+            case json_string:
+                printf("%s:%s\n", key, value->u.string.ptr);
+                break;
+            case json_boolean:
+                printf("%s:%d\n", key, value->u.boolean);
+                break;
+            case json_object:
+            case json_array:
+            case json_none:
+            case json_null:
+            default:
+                break;
             }
         }
     }
