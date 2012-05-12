@@ -11,6 +11,11 @@
 
 static int verbose_flag;
 
+void print_version()
+{
+    printf("1.0.0\n");
+}
+
 void print_help()
 {
     printf("\nprints periodic table of elements information.\n\n");
@@ -20,10 +25,12 @@ void print_help()
         "  -h               prints this menu\n"
         "  -v, --version    prints the version number\n"
         "  --verbose        prints verbose information\n\n"
+        "  --default        prints information line by line delimited by a colon ':'\n\n"
+        "  --json        prints information in JSON\n\n"
         "Examples:\n"
         "  pte Carbon\n"
         "  pte C\n"
-        "  pte 6\n"
+        "  pte --json 6 H gold\n"
         "\n");
 }
 
@@ -115,18 +122,30 @@ void print_element_info(int argc, char** argv) {
 
 int main(int argc, char** argv)
 {
+    static int help_flag, version_flag;
     static struct option long_options[] =
     {
+        {"help", no_argument, &help_flag, 1},
         {"verbose", no_argument, &verbose_flag, 1},
-        {"version", no_argument, NULL, 0}
+        {"version", no_argument, &version_flag, 1}
     };
 
     int c = getopt_long(argc, argv, "vh", long_options, 0);
 
+    if (help_flag)
+    {
+        print_help();
+        return 0;
+    }
+    else if (version_flag)
+    {
+        print_version();
+        return 0;
+    }
     switch(c)
     {
     case 'v':
-        printf("1.0.0\n");
+        print_version();
         break;
     case 'h':
         print_help();
