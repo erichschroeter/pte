@@ -6,39 +6,67 @@
 
 int print_json(int argc, char** argv)
 {
-    // can't do anything if we don't know which element(s) to print
-    if (argc < 1)
-    {
-        return;
-    }
     int i;
-    for (i=0; i < argc; i++)
+    int num_of_elements = 0;
+    json_value* elements[1024];
+    // filter out all arguments that are not elements
+    for (i = 0; i < argc; i++)
     {
         json_value* element = get_element(argv[i]);
         if (element == NULL)
         {
-            return;
+            continue;
         }
+        elements[num_of_elements] = element;
+        num_of_elements++;
+    }
+    printf("num_of_elements: %d\n", num_of_elements);
+    for (i=0; i < num_of_elements; i++)
+    {
+        json_value* element = elements[i];
+        // print the opening bracket to start a JSON object
+        printf("{");
         int j;
         for (j=0; j < element->u.object.length; j++)
         {
             char * key = element->u.object.values[j].name;
             json_value* value = element->u.object.values[j].value;
 
-            if (!strcmp(key, "name"))
+            switch(value->type)
             {
-                printf("name: '%s'\n", value->u.string.ptr);
+            case json_integer:
+                printf("\"%s\":\"%ld\"", key, value->u.integer);
+                break;
+            case json_double:
+                printf("\"%s\":\"%f\"", key, value->u.dbl);
+                break;
+            case json_string:
+                printf("\"%s\":\"%s\"", key, value->u.string.ptr);
+                break;
+            case json_boolean:
+                printf("\"%s\":\"%d\"", key, value->u.boolean);
+                break;
+            case json_object:
+            case json_array:
+            case json_none:
+            case json_null:
+            default:
+                break;
             }
-            else if (!strcmp(key, "symbol"))
+            // if not the last object print a comma
+            if (j != (element->u.object.length - 1))
             {
-                printf("symbol: '%s'\n", value->u.string.ptr);
-            }
-            else if (!strcmp(key, "atomicNumber"))
-            {
-                long num = value->u.integer;
-                printf("atomic number: '%ld'\n", num);
+                printf(",");
             }
         }
+        // print the closing bracket to end the JSON object
+        printf("}");
+        // if not the last object print a comma
+        if (i < (num_of_elements - 1))
+        {
+            printf(",");
+        }
     }
+    printf("\n");
     return 0;
 }

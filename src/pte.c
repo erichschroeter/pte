@@ -92,15 +92,16 @@ json_value* get_element(char* key)
  * @param argv the arguments
  */
 void print_element_info(int argc, char** argv) {
+    static int printer;
     static struct option printer_options[] =
     {
-        {"json", no_argument, NULL, PRINTER_JSON},
-        {"default", no_argument, NULL, PRINTER_DEFAULT}
+        {"json", no_argument, &printer, PRINTER_JSON},
+        {"default", no_argument, &printer, PRINTER_DEFAULT}
     };
 
     int c = getopt_long(argc, argv, "", printer_options, 0);
 
-    switch(c)
+    switch(printer)
     {
     case PRINTER_JSON:
         print_json(argc, argv);
