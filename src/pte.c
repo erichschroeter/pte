@@ -10,6 +10,7 @@
 #include "printers/printer-json.h"
 
 static int verbose_flag;
+extern const char* ELEMENTS_JSON;
 
 void print_version()
 {

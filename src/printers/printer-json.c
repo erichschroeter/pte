@@ -1,8 +1,17 @@
 #include <stdio.h>
 #include <string.h>
-#include "../../lib/json-parser/json.h"
 #include "../pte.h"
+#include "../elements.h"
+#include "../../lib/json-parser/json.h"
 #include "printer-json.h"
+
+extern const char* ELEMENTS_JSON;
+
+int print_json_all()
+{
+    printf("%s\n", ELEMENTS_JSON);
+    return 118;
+}
 
 int print_json(int argc, char** argv)
 {
@@ -12,6 +21,11 @@ int print_json(int argc, char** argv)
     // filter out all arguments that are not elements
     for (i = 0; i < argc; i++)
     {
+        if (!strcmp(argv[i], "*"))
+        {
+            print_json_all();
+            return 0;
+        }
         json_value* element = get_element(argv[i]);
         if (element == NULL)
         {

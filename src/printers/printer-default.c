@@ -4,7 +4,7 @@
 #include "../pte.h"
 #include "printer-default.h"
 
-int print_all()
+int print_default_all()
 {
     int i;
     for (i = 1; i <= 118; i++)
@@ -55,7 +55,7 @@ int print_default(int argc, char** argv)
     {
         if (!strcmp(argv[i], "*"))
         {
-            print_all();
+            print_default_all();
             return 0;
         }
         json_value* element = get_element(argv[i]);
