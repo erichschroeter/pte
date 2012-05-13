@@ -274,8 +274,8 @@
     "35": {
         "name" : "Bromine",
         "symbol" : "Br",
-        "atomicNumber" : 79.904,
-        "atomicWeight" : 35,
+        "atomicNumber" : 35,
+        "atomicWeight" : 79.904,
         "groundStateConfig" : "[Ar](3d^10)(4s^2)4p^5",
         "ionizationEnergy" : 11.8138
     },
