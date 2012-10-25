@@ -1,6 +1,6 @@
 #include "elements.h"
 
-extern const char* ELEMENTS_JSON =
+const char* ELEMENTS_JSON =
 "{"
 "    \"1\": {"
 "        \"name\" : \"Hydrogen\","

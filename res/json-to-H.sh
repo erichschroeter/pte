@@ -18,7 +18,7 @@ json_c() {
 cat << EOF
 #include "elements.h"
 
-extern const char* ELEMENTS_JSON =
+const char* ELEMENTS_JSON =
 "$(cat elements.json | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/"\n"/g')";
 
 EOF
