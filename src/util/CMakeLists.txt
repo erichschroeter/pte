@@ -1,3 +1,4 @@
-ADD_SOURCES(
-    util-file.c util-file.h
+set(SRCS
+    util-file.c
 )
+add_library(utils ${SRCS})

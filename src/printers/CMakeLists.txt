@@ -1,4 +1,5 @@
-ADD_SOURCES(
-    printer-default.c printer-default.h
-    printer-json.c printer-json.h
+set(SRCS
+    printer-default.c
+    printer-json.c
 )
+add_library(printers ${SRCS})

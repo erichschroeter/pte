@@ -1,19 +1,12 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.5)
-macro(add_sources)
-    file (RELATIVE_PATH _relPath "${CMAKE_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}")
-    foreach (_src ${ARGN})
-        if (_relPath)
-            list (APPEND SRCS "${_relPath}/${_src}")
-        else()
-            list (APPEND SRCS "${_src}")
-        endif()
-    endforeach()
-    if (_relPath)
-        # propagate SRCS to parent directory
-        set (SRCS ${SRCS} PARENT_SCOPE)
-    endif()
-endmacro()
+cmake_minimum_required(VERSION 2.8)
+project(pte)
 
-ADD_SUBDIRECTORY(src)
+add_subdirectory(src)
+add_subdirectory(lib)
 
-ADD_EXECUTABLE(pte ${SRCS})
+set(SRCS
+	src/pte.c
+	src/elements.c
+)
+add_executable(pte ${SRCS})
+target_link_libraries(pte printers utils json)
