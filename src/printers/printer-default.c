@@ -66,7 +66,7 @@ int print_default(int argc, char** argv)
         elements[num_of_elements] = element;
         num_of_elements++;
     }
-    for (i=0; i < argc; i++)
+    for (i=0; i < num_of_elements; i++)
     {
         json_value* element = elements[i];
         int j;
